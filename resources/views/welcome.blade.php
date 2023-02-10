@@ -11,7 +11,13 @@
     @guest
         <a href="/login">Login</a>
     @endguest
-    
+    @auth
+        <p>Selamat datang, {{ Auth::user()->name }}</p>
+        <a href="/logout">Logout</a>
+    @endauth
+    @can('is_admin')
+        <p> Ini admin </p>
+    @endcan
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
