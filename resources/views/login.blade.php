@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>{{ $title }}</title>
 
 <!-- Bootstrap css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
@@ -20,11 +20,14 @@
             @if (session()->has('succes'))
               <p class="text-success">{{ session('succes') }}</p>
             @endif
+            @if ($errors->any())
+              <p class="text-danger">{{ $errors->first() }}</p>
+            @endif
             <form class="mt-5" action="/login" method="post">
               @csrf
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email address</label>
-                  <input type="email" name="email" class="form-control @error('email') border border-1 border-danger @enderror" id="exampleInputEmail1" >
+                  <input type="email" value="{{ old('email') }}" name="email" class="form-control @error('email') border border-1 border-danger @enderror" id="exampleInputEmail1" >
                   @error('email')
                       <p class="text-danger">{{ $message }}</p>
                   @enderror
@@ -38,6 +41,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <div id="emailHelp" class="form-text mt-3"> <a href="/register">Belum Punya Akun?</a></div>
+                <div id="emailHelp" class="form-text mt-3"> <a href="/email/forgot-pass">Lupa Kata Sandi?</a></div>
               </form>
           </div>
         </div>

@@ -1,0 +1,68 @@
+*{
+    font-family: 'Poiret One', cursive;
+}
+.Nunito{
+    font-family: 'Nunito', sans-serif;
+}
+.w-95{
+    width: 95%;
+}
+body{
+    background-color: #E3E3E3;
+}
+
+nav{
+    background-color: #666464DB;
+    padding-bottom: 10px;
+    z-index: 1;
+}
+nav .nav2{
+    padding: 0 15px;
+    height: 35px;
+    background-color: #433939;
+}
+nav li{
+    list-style: none;
+}
+nav a{
+    text-decoration: none;
+}
+nav button{
+    max-width: max-content !important;
+    right: 0;
+    bottom: 0;
+}
+h1{
+    color: #4E4100 !important;
+}
+.desc{
+    width: 80%;
+}
+#home{
+    height: 100vh;
+    background-image: url("../img/island.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+#destination .discount{
+    width: 666px;
+}
+#destination .card{
+    width: 430px;
+    height: max-content;
+}
+
+#destination_page img{
+    width: 100%;
+}
+#destination_page .fa-star{
+    color: orange;
+}
+#destination_page h3{
+    font-weight: 300;
+}
+
+.wallpaperflare{
+    background-image: url("asset/wallpaperflare.jpg");
+    background-size: cover;
+}
