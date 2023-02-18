@@ -16,7 +16,7 @@ class LoginController extends Controller
     {
         return view('login',
     [
-        'title' => 'Login'
+        'title' => "Login Argent's"
     ]);
     }
 
@@ -29,7 +29,11 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            if(Auth::user()->is_admin != 0){
+                return redirect()->intended('/dashboard');
+            } else {
+                return redirect()->intended('/');
+            }
         }
 
         return Redirect::back()->withErrors(['error' => 'Email atau password salah!']);
@@ -39,7 +43,7 @@ class LoginController extends Controller
     {
         return view('register',
     [
-        'title' => 'Register',
+        'title' => "Register Argent's"
     ]);
     }
 

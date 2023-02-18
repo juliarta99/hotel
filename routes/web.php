@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\VerificationController;
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +47,9 @@ Route::post('/otp/forgot-pass/{verify_tokens:slug}', [VerificationController::cl
 // forgot pass
 Route::get('/forgot-pass/{verify_tokens:slug}', [UserController::class, 'forgot'])->name('forgot');
 Route::put('/forgot-pass/{verify_tokens:slug}', [UserController::class, 'updatePass'])->name('forgot');
+
+// dashbaord admin
+Route::middleware(['auth', 'is_admin'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/dashboard/user', DashboardUserController::class);
+});

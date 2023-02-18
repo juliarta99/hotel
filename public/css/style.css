@@ -63,6 +63,16 @@ h1{
 }
 
 .wallpaperflare{
-    background-image: url("asset/wallpaperflare.jpg");
+    background-image: url("../img/wallpaperflare.jpg");
     background-size: cover;
+}
+
+.search{
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.397);
+    transition: 0.5s;
+}
+.search:hover{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.397);
 }

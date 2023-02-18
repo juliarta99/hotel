@@ -13,9 +13,12 @@ class UserController extends Controller
     public function forgot($verify)
     {
         $otp = VerifyToken::where('slug', $verify)->first();
+        if($otp->is_verify === 0){
+            return redirect('email/forgot-pass')->with('error', 'Mohon untuk verifikasi email terlebih dahulu!');
+        }
         return view('forgot.forgot',
         [
-            'title' => 'Forgot Pass',
+            'title' => "Forgot Pass Argent's",
             'otp' => $otp
         ]);
     }
@@ -23,17 +26,15 @@ class UserController extends Controller
     public function updatePass($verify, Request $request)
     {
         $otp = VerifyToken::where('slug', $verify)->first();
-        if($otp->is_verify != true){
-            return redirect('email/forgot')->with('error', 'Mohon untuk verifikasi email terlebih dahulu!');
-        }
 
-        $validateData = $request->validate([
+        $request->validate([
             'password' => ['required', Password::min(8)->symbols()->numbers()],
             'konfirmasiPassword' => 'required|same:password'
         ]);
 
-        $validateData['password'] = Hash::make($request->password);
-        User::where('email', $otp->email)->update($validateData);
+        $request['password'] = Hash::make($request->password);
+        User::where('email', $otp->email)->update($request->except('konfirmasiPassword', '_token', '_method'));
+        $otp->delete();
 
         return redirect('/login')->with('succes', 'Password berhasil diubah');
     }

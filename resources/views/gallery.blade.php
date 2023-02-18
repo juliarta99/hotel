@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="col-3 p-1">
-                <div class="wallpaperflare w-100 h-100"><img src="{{ asset("img/") }}" alt=""></div>
+                <div class="wallpaperflare w-100 h-100"></div>
             </div>
         </div>
     </div>    

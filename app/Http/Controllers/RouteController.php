@@ -10,7 +10,7 @@ class RouteController extends Controller
     {
         return view('welcome',
         [
-            'title' => 'Urgent Hotel'
+            'title' => "Argent's Hotel"
         ]);
     }
 
@@ -18,7 +18,7 @@ class RouteController extends Controller
     {
         return view('destination',
         [
-            'title' => 'Destination Urgent Hotel'
+            'title' => "Destination Argent's Hotel"
         ]);
     }
 
@@ -26,7 +26,7 @@ class RouteController extends Controller
     {
         return view('gallery',
         [
-            'title' => 'Gallery Urgent Hotel'
+            'title' => "Gallery Urgent Hotel"
         ]);
     }
 
@@ -34,7 +34,7 @@ class RouteController extends Controller
     {
         return view('spa_servis',
         [
-            'title' => 'Spa Urgent Hotel'
+            'title' => "Spa Argent's Hotel"
         ]);
     }
 }

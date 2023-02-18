@@ -16,17 +16,34 @@
 
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-
 </head>
-<body>
-    <div class="container-fluid d-flex flex-column justify-content-center align-items-center vh-100">
-        <img src="{{ asset("img/verify.png") }}" class="w-25" alt="">
-        <h1 class="fw-bolder Nunito">Berhasil Register</h1>
-        <p class="Nunito">( cek email anda dan klik button verify )</p>
-        <form action="/email/resend-verify" class="d-flex align-items-center flex-column w-50" method="post">
-            @csrf
-            <button type="submit" class="w-25 btn bg-primary text-white">Resend</button>
-        </form>
-    </div>
+<body class="p-2">
+    <a href="/dashboard">Back</a>
+    <table class="">
+        <thead>
+            <tr>
+                <td>No</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Aksi</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($users as $user)
+            <tr>        
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>
+                    <form action="/dashboard/user/{{ $user->id }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 </html>

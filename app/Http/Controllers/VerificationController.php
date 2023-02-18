@@ -63,7 +63,11 @@ class VerificationController extends Controller
             return back()->with('error', 'Email tidak ditemukan!');
         }
 
-        VerifyToken::destroy('email', $validateData['email']);
+        $verifys = VerifyToken::where('email', $validateData['email'])->get();
+        foreach($verifys as $verify){
+            $verify->delete();
+        }
+        
         VerifyToken::create($validateData);
         $email = $validateData['email'];
         $token = $validateData['token'];

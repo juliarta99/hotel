@@ -38,10 +38,10 @@
                   @error('password')
                       <p class="text-danger">{{ $message }}</p>
                   @enderror
+                  <div id="emailHelp" class="form-text mt-1 text-end"> <a href="/email/forgot-pass">Lupa Kata Sandi?</a></div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <div id="emailHelp" class="form-text mt-3"> <a href="/register">Belum Punya Akun?</a></div>
-                <div id="emailHelp" class="form-text mt-3"> <a href="/email/forgot-pass">Lupa Kata Sandi?</a></div>
               </form>
           </div>
         </div>
