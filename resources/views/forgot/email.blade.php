@@ -25,6 +25,9 @@
         @if (session()->has('error'))
             <p class="text-danger">{{ session('error') }}</p>
         @endif
+        @if (session()->has('limit'))
+            <p class="text-danger">{{ session('limit') }}</p>
+        @endif
         <form action="/email/forgot-pass" class="d-flex align-items-center flex-column w-50" method="post">
             @csrf
             <input type="email" name="email" id="email" placeholder="Email" class="w-100 search ps-3 @error('email') border border-1 border-danger @enderror">

@@ -88,6 +88,13 @@ class VerificationController extends Controller
         ]);
     }
 
+    public function resendOtp($verify)
+    {
+        $otp = VerifyToken::where('slug', $verify)->first();
+        Mail::to($otp->email)->send(new ForgotPass($otp->email, $otp->token));
+        return redirect("/otp/forgot-pass/$otp->slug")->with('succes', 'Email berhasil terkirim!');
+    }
+
     public function verifyOtp($verify, Request $request)
     {
         $otp = VerifyToken::where('slug', $verify)->first();

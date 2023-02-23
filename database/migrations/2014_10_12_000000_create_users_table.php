@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('jk');
-            $table->string('tgl_lahir');
-            $table->string('alamat');
+            $table->string('jk')->nullable();
+            $table->string('tgl_lahir')->nullable();
+            $table->string('alamat')->nullable();
             $table->string('email')->unique();
-            $table->string('no_telp')->unique();
+            $table->string('no_telp')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_admin')->default(0);

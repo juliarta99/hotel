@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <h5 class="card-title">ARGENT'S SEMINYAK BALI</h5>
                             <b>$365</b>
-                            <a href="destination.html" class="btn btn-outline-warning">Detail</a>
+                            <a href="/destination" class="btn btn-outline-warning">Detail</a>
                         </div>
                     </div>
                 </div>

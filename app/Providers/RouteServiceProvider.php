@@ -6,6 +6,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -47,6 +48,38 @@ class RouteServiceProvider extends ServiceProvider
     {
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
+
+        RateLimiter::for('login', function (Request $request) {
+            return [
+                    Limit::perMinute(3)->by($request->input('email'))->response(function() {
+                        return redirect()->back()->with('limit', 'Tunggu 1 menit untuk percobaan selanjutnya');
+                    }),
+                ];
+        });
+
+        RateLimiter::for('verify-otp', function () {
+            return [
+                    Limit::perHour(3)->response(function() {
+                        return redirect()->back()->with('limit', 'Tunggu untuk percobaan selanjutnya');
+                    }),
+                ];
+        });
+
+        RateLimiter::for('first', function () {
+            return [
+                    Limit::perMinute(1)->response(function() {
+                        return redirect()->back()->with('limit', 'Tunggu 1 menit untuk percobaan selanjutnya');
+                    }),
+                ];
+        });
+
+        RateLimiter::for('third', function () {
+            return [
+                    Limit::perMinute(3)->response(function() {
+                        return redirect()->back()->with('limit', 'Tunggu 1 menit untuk percobaan selanjutnya');
+                    }),
+                ];
         });
     }
 }

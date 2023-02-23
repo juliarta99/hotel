@@ -28,6 +28,9 @@
         @if (session()->has('succes'))
             <p class="text-success">{{ session('succes') }}</p>
         @endif
+        @if (session()->has('limit'))
+            <p class="text-danger">{{ session('limit') }}</p>
+        @endif
         <p class="Nunito">(kode verifikasi sudah dikirim lewat email)</p>
         <form action="/otp/forgot-pass/{{ $otp->slug }}" class="d-flex align-items-center flex-column w-50" method="post">
             @csrf
@@ -36,6 +39,10 @@
                 <p class="text-danger">{{ $message }}</p>
             @enderror
             <button type="submit" class="w-25 btn bg-primary mt-3 text-white">Submit</button>
+        </form>
+        <form action="/resend/forgot-pass/{{ $otp->slug }}" method="post">
+            @csrf
+            <button type="submit" id="btn-resendOtp" class="text-primary mt-1">Resend?</button>
         </form>
     </div>
 </body>

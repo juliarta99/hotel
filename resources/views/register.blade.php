@@ -38,12 +38,12 @@
                         <p class="text-danger">{{ $message }}</p>
                       @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="mx-auto btn btn-primary">Submit</button>
                     <div class="form-text mt-3"> <a href="/login">Sudah Punya Akun ?</a></div>
                   </form>
             </div>
           <div class="col">
-            <img src="{{ asset('img/register.jpeg') }}" alt="">
+            <img src="{{ asset('img/register.png') }}" alt="">
           </div>
         </div>
     </div>

@@ -13,12 +13,15 @@
     <div class="container text-center vh-100">
         <div class="row align-items-center h-100">
             <div class="col">
-              <img src="{{ asset('img/login.jpeg') }}" alt="" style="width: 500px; height: 500px;">
+              <img src="{{ asset('img/login.png') }}" alt="" style="width: 500px; height: 500px;">
             </div>
           <div class="col">
             <h1>Login</h1>
             @if (session()->has('succes'))
               <p class="text-success">{{ session('succes') }}</p>
+            @endif
+            @if (session()->has('limit'))
+              <p class="text-danger">{{ session('limit') }}</p>
             @endif
             @if ($errors->any())
               <p class="text-danger">{{ $errors->first() }}</p>

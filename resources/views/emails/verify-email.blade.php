@@ -23,6 +23,9 @@
         <img src="{{ asset("img/verify.png") }}" class="w-25" alt="">
         <h1 class="fw-bolder Nunito">Berhasil Register</h1>
         <p class="Nunito">( cek email anda dan klik button verify )</p>
+        @if (session()->has('limit'))
+            <p class="text-danger">{{ session('limit') }}</p>
+        @endif
         <form action="/email/resend-verify" class="d-flex align-items-center flex-column w-50" method="post">
             @csrf
             <button type="submit" class="w-25 btn bg-primary text-white">Resend</button>
